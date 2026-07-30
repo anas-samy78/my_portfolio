@@ -133,14 +133,14 @@
         }
         .hero-glow {
             position: absolute;
-            width: 600px; height: 600px;
+            width: 460px; height: 460px;
             border-radius: 50%;
-            filter: blur(120px);
+            filter: blur(140px);
             pointer-events: none;
             z-index: 0;
         }
-        .glow-1 { background: rgba(0,212,255,0.07); top: -100px; right: -100px; }
-        .glow-2 { background: rgba(124,58,237,0.07); bottom: -100px; left: -100px; }
+        .glow-1 { background: rgba(0,212,255,0.045); top: -140px; right: -80px; }
+        .glow-2 { display: none; }
         .hero-content { position: relative; z-index: 1; max-width: 800px; }
 
         .hero-label {
@@ -189,12 +189,12 @@
         }
         .btn-primary {
             padding: 13px 32px;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-violet));
-            color: white; font-weight: 600; border-radius: 4px;
+            background: var(--accent-cyan);
+            color: #04141c; font-weight: 700; border-radius: 4px;
             border: none; cursor: pointer; font-family: var(--font-display);
-            transition: opacity 0.2s, transform 0.2s;
+            transition: background 0.2s, transform 0.2s;
         }
-        .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
+        .btn-primary:hover { background: #33ddff; transform: translateY(-2px); }
         .btn-ghost {
             padding: 12px 30px;
             border: 1px solid var(--border);
@@ -235,27 +235,30 @@
             position: relative; width: 260px; height: 260px; margin: 0 auto;
         }
         .profile-ring {
-            position: absolute; inset: -4px;
-            border-radius: 50%;
-            background: conic-gradient(var(--accent-cyan), var(--accent-violet), var(--accent-cyan));
-            animation: spin 6s linear infinite;
+            position: absolute; inset: -3px;
+            border-radius: 16px;
+            border: 1px solid var(--accent-cyan);
+            opacity: 0.5;
         }
-        @keyframes spin { to { transform: rotate(360deg); } }
         .profile-img {
             position: relative; z-index: 1;
             width: 100%; height: 100%;
-            border-radius: 50%;
+            border-radius: 14px;
             object-fit: cover;
-            border: 5px solid var(--bg-primary);
+            border: 1px solid var(--border);
         }
         .profile-placeholder {
             position: relative; z-index: 1;
             width: 100%; height: 100%;
-            border-radius: 50%;
+            border-radius: 14px;
             background: var(--bg-secondary);
-            border: 5px solid var(--bg-primary);
+            border: 1px solid var(--border);
             display: flex; align-items: center; justify-content: center;
-            font-size: 4rem;
+            font-family: var(--font-mono);
+            font-size: 3.2rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--accent-cyan);
         }
         .about-text h3 {
             font-size: 1.5rem; margin-bottom: 1.25rem;
@@ -345,10 +348,19 @@
         }
         .proj-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1rem; }
         .proj-icon { font-size:1.75rem; color:var(--accent-cyan); }
+        .proj-links { display:flex; gap:0.9rem; align-items:center; }
         .proj-link { color:var(--text-muted); transition:color 0.2s; }
         .proj-link:hover { color:var(--accent-cyan); }
         .project-card h3 { font-size:1.1rem; margin-bottom:0.75rem; }
         .project-card p { color:var(--text-secondary); font-size:0.92rem; flex-grow:1; margin-bottom:1.5rem; }
+        .proj-metrics {
+            display:flex; flex-wrap:wrap; gap:0.5rem 1.25rem;
+            margin-bottom:1.25rem;
+            font-family: var(--font-mono);
+            font-size:0.76rem;
+            color: var(--accent-green);
+        }
+        .proj-metrics span b { color:inherit; font-weight:700; }
         .tech-tags { display:flex; flex-wrap:wrap; gap:0.5rem; }
         .tech-tag {
             font-size:0.75rem; padding:3px 12px;
@@ -459,13 +471,13 @@
         }
         .btn-submit {
             width:100%; padding:13px;
-            background:linear-gradient(135deg, var(--accent-cyan), var(--accent-violet));
-            color:white; font-weight:600; border:none;
+            background: var(--accent-cyan);
+            color:#04141c; font-weight:700; border:none;
             border-radius:6px; cursor:pointer;
             font-family:var(--font-display); font-size:1rem;
-            transition:opacity 0.2s;
+            transition:background 0.2s;
         }
-        .btn-submit:hover { opacity:0.9; }
+        .btn-submit:hover { background:#33ddff; }
 
         /* ── FOOTER ── */
         footer {
@@ -562,7 +574,7 @@
             <div>
                 <div class="profile-frame">
                     <div class="profile-ring"></div>
-                    <div class="profile-placeholder">🤖</div>
+                    <div class="profile-placeholder">AS</div>
                 </div>
             </div>
             <div class="about-text">
@@ -578,11 +590,11 @@
                 </blockquote>
                 <div class="stats-row">
                     <div class="stat-box">
-                        <span class="stat-val">4+</span>
+                        <span class="stat-val">6+</span>
                         <span class="stat-lbl">Projects</span>
                     </div>
                     <div class="stat-box">
-                        <span class="stat-val">10+</span>
+                        <span class="stat-val">12+</span>
                         <span class="stat-lbl">Tools & Libs</span>
                     </div>
                     <div class="stat-box">
@@ -635,8 +647,8 @@
                     <h3>Machine & Deep Learning</h3>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-label"><span>Scikit-Learn (ML Models)</span><span class="skill-pct">80%</span></div>
-                    <div class="bar-track"><div class="bar-fill" style="width:80%"></div></div>
+                    <div class="skill-label"><span>Scikit-Learn & XGBoost</span><span class="skill-pct">85%</span></div>
+                    <div class="bar-track"><div class="bar-fill" style="width:85%"></div></div>
                 </div>
                 <div class="skill-item">
                     <div class="skill-label"><span>TensorFlow / PyTorch (DL)</span><span class="skill-pct">70%</span></div>
@@ -647,8 +659,8 @@
                     <div class="bar-track"><div class="bar-fill" style="width:70%"></div></div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-label"><span>Model Evaluation & Tuning</span><span class="skill-pct">75%</span></div>
-                    <div class="bar-track"><div class="bar-fill" style="width:75%"></div></div>
+                    <div class="skill-label"><span>Model Evaluation & Tuning</span><span class="skill-pct">80%</span></div>
+                    <div class="bar-track"><div class="bar-fill" style="width:80%"></div></div>
                 </div>
             </div>
 
@@ -666,7 +678,7 @@
                     <span class="ai-pill">OpenCV</span>
                     <span class="ai-pill">Object Detection</span>
                     <span class="ai-pill">Image Classification</span>
-                    <span class="ai-pill">AI Automation</span>
+                    <span class="ai-pill">Streamlit Deployment</span>
                     <span class="ai-pill">Text Classification</span>
                 </div>
             </div>
@@ -703,8 +715,72 @@
 
             <article class="project-card reveal">
                 <div class="proj-top">
+                    <span class="proj-icon"><i class="fa-solid fa-shield-halved"></i></span>
+                    <div class="proj-links">
+                        <a href="https://credit-card-fraud-detection-anas.streamlit.app/" target="_blank" class="proj-link" title="Live App"><i class="fa-solid fa-arrow-up-right-from-square fa-lg"></i></a>
+                        <a href="https://github.com/anas-samy78/Credit-Card-Fraud-Detection" target="_blank" class="proj-link" title="Source Code"><i class="fa-brands fa-github fa-lg"></i></a>
+                    </div>
+                </div>
+                <h3>Credit Card Fraud Detection</h3>
+                <p>End-to-end fraud detection system trained on highly imbalanced transaction data. Built an XGBoost classifier with full feature engineering, then deployed it as an interactive Streamlit app for real-time fraud prediction, probability scores, and risk levels.</p>
+                <div class="proj-metrics">
+                    <span>ROC-AUC <b>0.998</b></span>
+                    <span>Recall <b>80%</b></span>
+                    <span>F1 <b>87%</b></span>
+                </div>
+                <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">XGBoost</span>
+                    <span class="tech-tag">Streamlit</span>
+                    <span class="tech-tag">Imbalanced Data</span>
+                </div>
+            </article>
+
+            <article class="project-card reveal">
+                <div class="proj-top">
+                    <span class="proj-icon"><i class="fa-solid fa-sack-dollar"></i></span>
+                    <div class="proj-links">
+                        <a href="https://programmer-salary-predictor.streamlit.app/" target="_blank" class="proj-link" title="Live App"><i class="fa-solid fa-arrow-up-right-from-square fa-lg"></i></a>
+                        <a href="https://github.com/anas-samy78/Programmer-Salary-Predictor" target="_blank" class="proj-link" title="Source Code"><i class="fa-brands fa-github fa-lg"></i></a>
+                    </div>
+                </div>
+                <h3>Programmer Salary Predictor</h3>
+                <p>ML regression app that estimates a developer's expected salary from experience, education, skill count, industry, and remote-work status. Compared several regression models before deploying the best performer through a Streamlit interface.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Scikit-Learn</span>
+                    <span class="tech-tag">XGBoost</span>
+                    <span class="tech-tag">Streamlit</span>
+                </div>
+            </article>
+
+            <article class="project-card reveal">
+                <div class="proj-top">
+                    <span class="proj-icon"><i class="fa-solid fa-car"></i></span>
+                    <div class="proj-links">
+                        <a href="https://github.com/anas-samy78/BMW-Used-Car-Price-Prediction" target="_blank" class="proj-link" title="Source Code"><i class="fa-brands fa-github fa-lg"></i></a>
+                    </div>
+                </div>
+                <h3>BMW Used Car Price Prediction</h3>
+                <p>Regression pipeline predicting used BMW resale prices from specs like mileage, engine size, and transmission. Engineered features such as car age and price-per-mile, then compared Linear Regression, Random Forest, and XGBoost to select the best model.</p>
+                <div class="proj-metrics">
+                    <span>Test R² <b>0.951</b></span>
+                    <span>MAE <b>$1,581</b></span>
+                </div>
+                <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">XGBoost</span>
+                    <span class="tech-tag">Feature Engineering</span>
+                    <span class="tech-tag">Regression</span>
+                </div>
+            </article>
+
+            <article class="project-card reveal">
+                <div class="proj-top">
                     <span class="proj-icon"><i class="fa-brands fa-amazon"></i></span>
-                    <a href="https://github.com/anas-samy78" target="_blank" class="proj-link"><i class="fa-brands fa-github fa-lg"></i></a>
+                    <div class="proj-links">
+                        <a href="https://github.com/anas-samy78" target="_blank" class="proj-link" title="Source Code"><i class="fa-brands fa-github fa-lg"></i></a>
+                    </div>
                 </div>
                 <h3>Amazon Sales Performance Analysis</h3>
                 <p>Exploratory data analysis on an e-commerce dataset to identify revenue trends, top products, and seasonality. Cleaned and processed raw data using Pandas to surface actionable business insights.</p>
@@ -719,7 +795,9 @@
             <article class="project-card reveal">
                 <div class="proj-top">
                     <span class="proj-icon"><i class="fa-solid fa-users"></i></span>
-                    <a href="https://github.com/anas-samy78" target="_blank" class="proj-link"><i class="fa-brands fa-github fa-lg"></i></a>
+                    <div class="proj-links">
+                        <a href="https://github.com/anas-samy78" target="_blank" class="proj-link" title="Source Code"><i class="fa-brands fa-github fa-lg"></i></a>
+                    </div>
                 </div>
                 <h3>Customer Subscription Churn Analysis</h3>
                 <p>Built a churn prediction pipeline analyzing customer behavioral data with Scikit-Learn. Identified key retention drivers and visualized churn risk segments to inform business strategy.</p>
@@ -733,23 +811,10 @@
 
             <article class="project-card reveal">
                 <div class="proj-top">
-                    <span class="proj-icon"><i class="fa-solid fa-car"></i></span>
-                    <a href="https://github.com/anas-samy78" target="_blank" class="proj-link"><i class="fa-brands fa-github fa-lg"></i></a>
-                </div>
-                <h3>BMW Market Pricing Analysis</h3>
-                <p>Statistical investigation of luxury vehicle pricing factors using regression modeling and visual comparisons. Highlighted price distributions and market behavioral patterns using Matplotlib & Seaborn.</p>
-                <div class="tech-tags">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Matplotlib</span>
-                    <span class="tech-tag">Seaborn</span>
-                    <span class="tech-tag">Statistics</span>
-                </div>
-            </article>
-
-            <article class="project-card reveal">
-                <div class="proj-top">
                     <span class="proj-icon"><i class="fa-solid fa-spider"></i></span>
-                    <a href="https://github.com/anas-samy78" target="_blank" class="proj-link"><i class="fa-brands fa-github fa-lg"></i></a>
+                    <div class="proj-links">
+                        <a href="https://github.com/anas-samy78" target="_blank" class="proj-link" title="Source Code"><i class="fa-brands fa-github fa-lg"></i></a>
+                    </div>
                 </div>
                 <h3>Wuzzuf Data Analyst Jobs Scraper</h3>
                 <p>Web scraper built with BeautifulSoup, Requests, and Pandas to extract every available Data Analyst job posting from Wuzzuf. Collected job title, company name, address, work type (full-time, freelance, internship), work location (on-site, online, hybrid), required skills, and job link — then exported the structured dataset to a CSV file.</p>
@@ -780,9 +845,9 @@
                     <h3>AI & ML Project Execution</h3>
                     <h4>Independent Practical Applications</h4>
                     <ul>
-                        <li>Building data and AI portfolios spanning e-commerce analytics, vehicle market pricing, and automated job-market data collection.</li>
+                        <li>Building data and AI portfolios spanning fraud detection, salary prediction, vehicle pricing, e-commerce analytics, and automated job-market data collection.</li>
                         <li>Developing reproducible Python pipelines for automated data cleaning, feature engineering, and model training.</li>
-                        <li>Applying classification, regression, and clustering techniques to solve real business problems.</li>
+                        <li>Applying classification, regression, and clustering techniques to solve real business problems, and shipping models as live Streamlit apps.</li>
                     </ul>
                 </div>
             </div>
@@ -835,7 +900,7 @@
             <div class="svc-card reveal">
                 <div class="svc-icon"><i class="fa-solid fa-brain"></i></div>
                 <h3>Machine Learning Models</h3>
-                <p>Building, training, and evaluating predictive models for classification, regression, and clustering using Scikit-Learn.</p>
+                <p>Building, training, and evaluating predictive models for classification, regression, and clustering using Scikit-Learn and XGBoost.</p>
             </div>
 
             <div class="svc-card reveal">
@@ -857,9 +922,9 @@
             </div>
 
             <div class="svc-card reveal">
-                <div class="svc-icon"><i class="fa-solid fa-spider"></i></div>
-                <h3>Web Scraping & Data Collection</h3>
-                <p>Automated extraction of structured data from websites using BeautifulSoup and Requests, exported into clean, ready-to-analyze datasets.</p>
+                <div class="svc-icon"><i class="fa-solid fa-rocket"></i></div>
+                <h3>Model Deployment</h3>
+                <p>Packaging trained models into interactive Streamlit web apps, ready for real users to query and act on instantly.</p>
             </div>
 
             <div class="svc-card goal-card reveal">
